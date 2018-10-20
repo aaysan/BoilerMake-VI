@@ -62,6 +62,36 @@ sub {
 .Picture {color: dodgerblue;}
 .Confirm {color: red;}
 
+.func {
+	border: none;
+	margin-top: 15%;
+	margin-left: 10%;
+	margin-right: 5%;
+    background-color: #e0622c;
+    padding: 14px 80px;
+    font-size: 32px;
+    cursor: pointer;
+    display: inline-block;
+}
+.func:hover {background: #993366; text-decoration: underline;}
+.Add {color: yellow;}
+.Select {color: rgb(0,0,102);}
+
+.func2 {
+	border: none;
+	margin-top: 5%;
+	margin-left: 6%;
+	margin-right: 6%;
+    background-color: #e0622c;
+    padding: 14px 80px;
+    font-size: 32px;
+    cursor: pointer;
+    display: inline-block;
+}
+.func2:hover {background: #993366; text-decoration: underline;}
+.Recommend {color: lightgreen;}
+.Remove {color: orange;}
+
 /*------------------------------------*\
 	NAV
 \*------------------------------------*/
