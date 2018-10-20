@@ -2,6 +2,7 @@ from clarifai.rest import Image as ClImage
 
 from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
+import re
 import pprint as pp
 
 def finditemandcolor(imageurl):
@@ -11,6 +12,7 @@ def finditemandcolor(imageurl):
     image = ClImage(url=imageurl)
     itemspredict = model.predict([image])
 
+    # pp.pprint(itemspredict)
     model2 = app.models.get('color')
     image = ClImage(url=imageurl)
     colorpredict = model2.predict([image])
@@ -23,7 +25,7 @@ def finditemandcolor(imageurl):
     except:
         itemlist = []
 
-    #pp.pprint(colorpredict)
+    # pp.pprint(colorpredict)
 
     try:
         colorlist = sorted(colorpredict["outputs"][0]["data"]["colors"], key=lambda k: k['value'],reverse=True)
@@ -41,6 +43,7 @@ def finditemandcolor(imageurl):
     for i in itemlist:
         tempdict["name"] = i["name"]
         tempdict["value"] = i["value"]
+        tempdict["Occasion"] = get_occasion(tempdict["name"])
         finalitemlist += [tempdict]
         tempdict = dict()
     tempdict = dict()
@@ -48,13 +51,34 @@ def finditemandcolor(imageurl):
         tempdict["name"] = i["w3c"]["name"]
         tempdict["value"] = i["value"]
         tempdict["hex"] = i["w3c"]["hex"]
+
         finalcolorlist += [tempdict]
         tempdict = dict()
 
     return(finalitemlist,finalcolorlist)
 
 
+def get_occasion(name):
+    # Casual, Sportwear, Business/Business Casual
+
+    sportspattern = ".*Activewear.*"
+    sportwear = re.search(sportspattern,name)
+
+
+    if sportwear is not None:
+        return "Sports|Activewear"
+
+    businesspattern = "Blazer|Button-Down|Blouse|Button-Up|Pant Suit|Tie|Vest"
+    businesswear = re.search(businesspattern,name)
+
+    if businesswear is not None:
+        return "Business|Business Casual"
+
+
+
+    return "Casual|Daily"
+
 if __name__ == "__main__":
-    temp1,temp2 = finditemandcolor("https://i.imgur.com/JNNTgci.jpg")
+    temp1,temp2 = finditemandcolor("https://i.imgur.com/JhwydNl.png")
     pp.pprint(temp1)
     pp.pprint(temp2)
