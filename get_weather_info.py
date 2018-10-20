@@ -6,7 +6,8 @@ import re
 
 api_key = "i8F30cTGqhtmtUAdxa2TBrf9wr9GMuGZ" # "eauUGxjZkDMdh3HSNEur6IHsMBw9uvW4" Alp API
 
-def getWeatherInfo(type):
+
+def get_weather_info(type):
 
     # find current location lat and lon
     http = urllib3.PoolManager()
