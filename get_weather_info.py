@@ -7,7 +7,7 @@ import re
 api_key = "i8F30cTGqhtmtUAdxa2TBrf9wr9GMuGZ" # "eauUGxjZkDMdh3HSNEur6IHsMBw9uvW4" Alp API
 
 
-def get_weather_info(type):
+def get_weather_info(type='C'):
 
     # find current location lat and lon
     http = urllib3.PoolManager()
@@ -47,7 +47,7 @@ def get_weather_info(type):
     url = "http://dataservice.accuweather.com/currentconditions/v1/" + location_key + '?apikey=' + api_key + '&language=en-us&details=false'
     response = http.request('GET', url)
     res = json.loads(response.data.decode('utf-8'))
-    # print(res)
+    print(res)
     # print(res[0]['Temperature'])
 
     if type == 'C':
@@ -57,4 +57,6 @@ def get_weather_info(type):
     else:
         return None
 
-    return round(result, 0)
+    return (round(result, 0),res[0]['WeatherText'])
+
+print(get_weather_info())
