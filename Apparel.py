@@ -4,6 +4,33 @@ from clarifai.rest import ClarifaiApp
 from clarifai.rest import Image as ClImage
 import re
 import pprint as pp
+import cv2
+import pyimgur
+
+CLIENT_ID = "100ef2fd6ae00e0"
+
+def getApparel():
+    cv2.namedWindow("Cloth Detection")
+    vc = cv2.VideoCapture(0)
+
+    time = 0
+
+    while vc.isOpened():
+        ret, frame = vc.read()
+        if frame is None:
+            print("Apperal Detection Error in getApperal")
+            break
+        time += 1
+        if time == 3:
+            cv2.imwrite("Clothing.png", frame)
+            break
+
+def get_clothing_url_string():
+    im = pyimgur.Imgur(CLIENT_ID)
+    uploaded_image = im.upload_image("Clothing.png",title="Image for Clothing Detection")
+    return uploaded_image.link
+
+
 
 def finditemandcolor(imageurl):
 

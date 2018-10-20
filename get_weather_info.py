@@ -47,7 +47,7 @@ def get_weather_info(type='C'):
     url = "http://dataservice.accuweather.com/currentconditions/v1/" + location_key + '?apikey=' + api_key + '&language=en-us&details=false'
     response = http.request('GET', url)
     res = json.loads(response.data.decode('utf-8'))
-    print(res)
+    # print(res)
     # print(res[0]['Temperature'])
 
     if type == 'C':
@@ -59,4 +59,4 @@ def get_weather_info(type='C'):
 
     return (round(result, 0),res[0]['WeatherText'])
 
-print(get_weather_info())
+# print(get_weather_info())

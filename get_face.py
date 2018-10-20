@@ -1,13 +1,12 @@
 # Mehmet Alp Aysan
 
 import cv2
-import numpy as np
 import pyimgur
 
 CLIENT_ID = "100ef2fd6ae00e0"
 
 
-def get_url_string():
+def get_face_url_string():
     im = pyimgur.Imgur(CLIENT_ID)
     uploaded_image = im.upload_image("Face1.png", title="Image for Face ID")
     return uploaded_image.link
@@ -21,7 +20,7 @@ def get_face():
     eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
     if eye_cascade.empty(): raise Exception("your eye_cascade is empty. are you sure, the path is correct ?")
 
-    cv2.namedWindow("preview")
+    cv2.namedWindow("Face Detection")
     vc = cv2.VideoCapture(0)
 
     time = 0
@@ -31,7 +30,7 @@ def get_face():
         if frame is None:
             break
 
-        print(time)
+        # print(time)
         if time == 10:
             cv2.imwrite("Face1.png", frame)
             break
