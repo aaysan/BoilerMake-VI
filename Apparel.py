@@ -35,7 +35,7 @@ def finditemandcolor(imageurl):
         colorlist = []
 
     finalitemlist = []
-    finalcolorlist = colorlist
+    finalcolorlist = []
     tempdict = dict()
 
     for i in itemlist:
@@ -43,11 +43,18 @@ def finditemandcolor(imageurl):
         tempdict["value"] = i["value"]
         finalitemlist += [tempdict]
         tempdict = dict()
+    tempdict = dict()
+    for i in colorlist:
+        tempdict["name"] = i["w3c"]["name"]
+        tempdict["value"] = i["value"]
+        tempdict["hex"] = i["w3c"]["hex"]
+        finalcolorlist += [tempdict]
+        tempdict = dict()
 
     return(finalitemlist,finalcolorlist)
 
 
 if __name__ == "__main__":
-    temp1,temp2 = finditemandcolor("temp")
+    temp1,temp2 = finditemandcolor("https://i.imgur.com/JNNTgci.jpg")
     pp.pprint(temp1)
     pp.pprint(temp2)
