@@ -57,5 +57,3 @@ def getWeatherInfo(type):
         return None
 
     return round(result, 0)
-
-print(getWeatherInfo('C'))
