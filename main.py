@@ -51,7 +51,6 @@ if __name__ == "__main__":
     count = 0
     face_flag = False
     clothes_added_request = False
-    nameofperson = ""
     while True:
 
         if count % 60 == 0:
