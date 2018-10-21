@@ -1,0 +1,120 @@
+<style type="text/css">
+	body {
+		margin: 0;
+	}
+
+    .backimage {
+		background-image: url({{ url_for('static', filename='img/bg.png') }});
+		background-color: #cccccc;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+		height: 800px;
+	}
+
+	.maintext {
+  		text-align: left;
+  		position: absolute;
+  		top: 10%;
+  		left: 20%;
+  		transform: translate(-50%, -50%);
+  		color: navy;
+	}
+	.weather {
+		text-align: right;
+		position: absolute;
+		top: 10%;
+		right: 3%;
+		transform: translate(-50%, -50%);
+		color: navy;
+	}
+
+</style>
+</head>
+<body>
+	<link  rel = "stylesheet" href = "{{ url_for('static', filename='css/style.css') }}">
+	<div class="backimage">
+		<div class="maintext">
+			<h1 style="font-size: 30px; color: #D4D4D4;" id="tempid1">Hello Sophia!</h1>
+		</div>
+		<div class="weather">
+			<h1 style="font-size: 30px; color: #D4D4D4;" id="tempid2">Weather</h1>
+			<h1 style="font-size: 30px; color: #D4D4D4;" id="tempid3">Temperature</h2>
+		</div>
+
+		<center>
+			<h5>Suggest Clothes</h5>
+		</center>
+		<p>
+			<h1 style="color: navy; padding-left: 10%">What is the Occasion?</h1>
+				<label class="container">Casual
+  					<input type="radio" name="radio" id="radio1">
+  					<span class="checkmark"></span>
+				</label>
+				<label class="container">Sports
+  					<input type="radio" name="radio" id="radio2">
+  					<span class="checkmark"></span>
+				</label>
+				<label class="container">Business
+  					<input type="radio" name="radio" id="radio3">
+  					<span class="checkmark"></span>
+				</label>
+				<!-- <label class="container">Wedding
+  					<input type="radio" name="radio">
+  					<span class="checkmark"></span>
+				</label> -->
+				<button onclick="location.href='http://www.google.com'"class="func3 Submit" id="tempid5">Submit</button>
+		</p>
+	</div>
+
+	<script>
+		var url_string = window.location.href
+		var url = new URL(url_string);
+		var name = url.searchParams.get("name");
+		const idelement = document.getElementById("tempid1");
+		idelement.innerHTML =  name;
+	</script>
+
+
+	<script>
+	const data = fetch(
+	   "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/weather/incoming_webhook/get_weather"
+   ).then(response => response.json())
+   .then(json => {
+	   const idelement2 = document.getElementById("tempid2");
+	   idelement2.innerHTML = "Weather: "+ json["Description"];
+	   const idelement3 = document.getElementById("tempid3");
+	   idelement3.innerHTML = "Temperature "+ json["Temperature"]["$numberDouble"] + "C";
+   })
+	</script>
+
+
+	<script>
+		document.getElementById('tempid5').onclick = function() {
+			var url_string = window.location.href
+			var url = new URL(url_string);
+			var name = url.searchParams.get("name");
+			var x = document.getElementById("radio1").value;
+			var y = document.getElementById("radio2").value;
+			var z = document.getElementById("radio3").value;
+			var typecl = "Casual";
+			if(x === 1){
+				typecl = "Casual";
+			}
+			if(y === 1){
+				typecl = "Sports";
+			}
+			if(z === 1){
+				typecl = "Business";
+			}
+			const data1 = fetch("https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/upload_img/incoming_webhook/find_cloth?name="+name+"&occasion_type="+typecl)
+			.then(response => response.json())
+	 	    .then(json => {
+	 		   console.log(json);
+	 	   });
+		}
+
+	</script>
+
+</body>
