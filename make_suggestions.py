@@ -32,16 +32,17 @@ def make_suggestions(weather,name,cloth_type):
     # TODO:: Weather Suggestions
 
     for elem in possible_attires:
+        # print(elem['_id'])
         # print(elem['url'],elem['cloth'])
         if int(weather["Temperature"]) < 15:
             cold_match = re.search(coldpattern, elem['cloth']['name'])
             if cold_match is not None:
-                print("its cold. Would you like a sweater? ")
+                # print("its cold. Would you like a sweater? ")
                 suggestions.add(elem['cloth']['name'])
 
         if int(weather["Temperature"]) < 8:
             very_cold_match = re.search(verycoldpattern, elem['cloth']['name'])
-            print("its too cold. Would you like a jacket? " );
+            # print("its too cold. Would you like a jacket? " );
             if very_cold_match is not None:
                 suggestions.add(elem['cloth']['name'])
 
@@ -60,18 +61,19 @@ def make_suggestions(weather,name,cloth_type):
         if elem['cloth']['Occasion'] == occasion:
             suggestions.add(elem['cloth']['name'])
 
-    final_url_list = []
+    final_url_list = set()
 
     for elem in possible_attires:
 
         if elem['cloth']['name'] in suggestions:
-            final_url_list.append(elem['url'])
+            final_url_list.add(elem['_id']['$oid'])
 
     return final_url_list
 
-weather = dict()
-weather["Description"] = "Partly Cloudy"
-weather["Temperature"] = "22"
-res = make_suggestions(weather, "Alp", None)
-# print("--done--")
-print(res)
+# weather = dict()
+# weather["Description"] = "Partly Cloudy"
+# weather["Temperature"] = "22"
+# res = make_suggestions(weather, "Alp", None)
+# # print("--done--")
+# print(res)
+# print(len(res))
