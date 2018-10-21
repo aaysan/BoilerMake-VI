@@ -2,7 +2,7 @@ from imageupload import uploadimage
 import Apparel
 import pprint as pp
 import get_face
-import get_weather_info
+import weather
 import get_face_id
 import cognitive_face as CF
 import requests
@@ -18,12 +18,12 @@ if __name__ == "__main__":
     base_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0'  # Replace with your regional Base URL
     CF.BaseUrl.set(base_url)
 
-    weather_info = get_weather_info.get_weather_info()
-
-    weather_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/' \
-                           r'weather/incoming_webhook/post_weather'
-
-    requests.post(weather_database_url, json=weather_info)
+    # weather_info = weather.get_weather_info()
+    #
+    # weather_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/' \
+    #                        r'weather/incoming_webhook/post_weather'
+    #
+    # requests.post(weather_database_url, json=weather_info)
 
     try:
         CF.face_list.create("smartdrobe")
@@ -48,10 +48,10 @@ if __name__ == "__main__":
 
 
 
-    temp = ""
-
-    while temp == "":
-        temp = input("Are you ready? ")
+    # temp = ""
+    #
+    # while temp == "":
+    #     temp = input("Are you ready? ")
 
     Apparel.getApparel()
     #

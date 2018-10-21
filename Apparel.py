@@ -11,7 +11,7 @@ CLIENT_ID = "100ef2fd6ae00e0"
 
 def getApparel():
     cv2.namedWindow("Cloth Detection")
-    vc = cv2.VideoCapture(0)
+    vc = cv2.VideoCapture(2)
 
     time = 0
 
