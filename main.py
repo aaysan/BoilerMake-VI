@@ -31,6 +31,23 @@ if __name__ == "__main__":
     except:
         pass
 
+
+    face_flag = True
+    get_face.get_face()
+    url = get_face.get_face_url_string()
+    # print(url)
+    faceId = get_face_id.get_face_id(url)
+    # print(faceId)
+    #
+    nameofperson = get_face_id.lookup_face(faceId, url)
+
+    face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
+                        r'ure_face/incoming_webhook/face_detected'
+    face_info = dict()
+    face_info["name"] = nameofperson
+    face_info["url"] = url
+    requests.post(face_database_url, json=face_info)
+
     count = 0
     face_flag = False
     clothes_added_request = False
@@ -41,22 +58,8 @@ if __name__ == "__main__":
             count = 0
             face_flag = False
 
-        if not face_flag:
-            face_flag = True
-            get_face.get_face()
-            url = get_face.get_face_url_string()
-            # print(url)
-            faceId = get_face_id.get_face_id(url)
-            # print(faceId)
-            #
-            nameofperson = get_face_id.lookup_face(faceId, url)
+        count += 1
 
-            face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
-                                r'ure_face/incoming_webhook/face_detected'
-            face_info = dict()
-            face_info["name"] = nameofperson
-            face_info["url"] = url
-            requests.post(face_database_url,json=face_info)
 
         # input("Press s to start")
         #
@@ -71,11 +74,13 @@ if __name__ == "__main__":
                           r"/add_cloth/incoming_webhook/ping_add_cloth"
         clothesreq = requests.get(clothes_add_url)
 
-        if clothesreq == "FAIL":
-            clothes_added_request = False
-        else:
+        print(clothesreq.text)
+        if '{' in clothesreq.text:
             clothes_added_request = True
+        else:
+            clothes_added_request = False
 
+        print(clothes_added_request)
         if clothes_added_request:
             Apparel.getApparel()
             #
