@@ -13,7 +13,7 @@
 	body {
 		margin: 0;
 	}
-	
+
     .backimage {
 		background-image: url({{ url_for('static', filename='img/bg.png') }});
 		background-color: #cccccc;
@@ -24,8 +24,8 @@
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		position: relative;
-		height: 100%; 
-	} 
+		height: 100%;
+	}
 
 	.maintext {
   text-align: center;
@@ -35,14 +35,16 @@
   transform: translate(-50%, -50%);
   color: navy;
 	}
- 
+
 </style>
 </head>
 <body>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class="backimage">
 		<dev class = "maintext">
-			<h1 style="font-size: 50px">Welcome, What would you like to do today?</h1>
+			<h1 style="font-size: 50px; color: #D4D4D4;">Welcome</h1>
+			<h2 style="font-size: 30px; color: #D4D4D4;">What would you like to wear today?</h2>
+
 		</dev>
 		<center>
 				<p>
@@ -53,7 +55,7 @@
 					<button onclick="location.href='{{ url_for('static', filename='../Sophia') }}'"class="btn Confirm">Confirm</button>
 				</p>
 		</center>
-		
+
 	</div>
 
 		<p></p>
@@ -133,5 +135,5 @@ Science, and Education Library (HSSE) - Stewart Center 135</p>
 </div>
 </div>
 </div> -->
-</body> 
+</body>
 </html>
