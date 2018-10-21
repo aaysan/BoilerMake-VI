@@ -6,7 +6,7 @@
 		body {
 			margin: 0;
 		}
-		
+
 		.backimage {
 			background-image: url({{ url_for('static', filename='img/bg.png') }});
 			background-color: #cccccc;
@@ -19,7 +19,7 @@
 			position: relative;
 			height: 100%;
 		}
-		
+
 		.maintext {
 			text-align: center;
 			position: absolute;
@@ -28,19 +28,17 @@
 			transform: translate(-50%, -50%);
 			color: navy;
 		}
-		
+
 	</style>
 </head>
 <body>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class="backimage">
-		<!-- <script src="{{ url_for('static', filename='js/index.js') }}">
-			checkForNewData();
-		</script> -->
+
 		<dev class = "maintext">
 			<h1 style="font-size: 50px; color: #D4D4D4;">Welcome</h1>
 			<h2 style="font-size: 30px; color: #D4D4D4;">What would you like to wear today?</h2>
-			
+
 		</dev>
 		<center>
 			<p>
@@ -51,10 +49,15 @@
 				<button onclick="location.href='{{ url_for('static', filename='../Sophia') }}'"class="btn Confirm">Confirm</button>
 			</p>
 		</center>
-		
+
 	</div>
-	
+
 	<p></p>
 	<p></p>
+	<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+		<script>
+			console.log(`123`)
+			checkForNewData();
+	</script>
 </body>
 </html>
