@@ -31,20 +31,20 @@ if __name__ == "__main__":
         pass
 
 
-    get_face.get_face()
-    url = get_face.get_face_url_string()
-    # print(url)
-    faceId = get_face_id.get_face_id(url)
-    # print(faceId)
+    # get_face.get_face()
+    # url = get_face.get_face_url_string()
+    # # print(url)
+    # faceId = get_face_id.get_face_id(url)
+    # # print(faceId)
+    # #
+    # nameofperson = get_face_id.lookup_face(faceId, url)
     #
-    nameofperson = get_face_id.lookup_face(faceId, url)
-
-    face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
-                        r'ure_face/incoming_webhook/face_detected'
-    face_info = dict()
-    face_info["name"] = nameofperson
-    face_info["url"] = url
-    requests.post(face_database_url,json=face_info)
+    # face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
+    #                     r'ure_face/incoming_webhook/face_detected'
+    # face_info = dict()
+    # face_info["name"] = nameofperson
+    # face_info["url"] = url
+    # requests.post(face_database_url,json=face_info)
 
     # input("Press s to start")
     #

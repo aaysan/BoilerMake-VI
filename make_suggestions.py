@@ -5,7 +5,7 @@ import requests
 import pprint as pp
 import json
 
-def make_suggestions(weather,name,cloth_type):
+def make_suggestions(weather,name,occasion):
 
     # get inputs about the occasion
 
@@ -16,20 +16,18 @@ def make_suggestions(weather,name,cloth_type):
 
     suggestions = set()
 
-    occasion = input("What is the occasion? ((B)usiness,Casual,Sportwear\n->")
+    # occasion = input("What is the occasion? ((B)usiness,Casual,Sportwear\n->")
 
     # get personal info
     persons_url = r"https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/upload_" \
                   r"img/incoming_webhook/find_cloth"
 
-    if cloth_type is None:
-        params = {'name':name}
-    else:
-        params = {'name':name, 'cloth_type':cloth_type}
+    # if cloth_type is None:
+    params = {'name':name}
+    # else:
+    #     params = {'name':name, 'cloth_type':cloth_type}
     a = requests.get(persons_url, params=params)
     possible_attires = json.loads(a.text)
-
-    # TODO:: Weather Suggestions
 
     for elem in possible_attires:
         # print(elem['_id'])
@@ -60,7 +58,7 @@ def make_suggestions(weather,name,cloth_type):
 
         if elem['cloth']['Occasion'] == occasion:
             suggestions.add(elem['cloth']['name'])
-
+    print(suggestions)
     final_url_list = set()
 
     for elem in possible_attires:
@@ -70,10 +68,10 @@ def make_suggestions(weather,name,cloth_type):
 
     return final_url_list
 
-# weather = dict()
-# weather["Description"] = "Partly Cloudy"
-# weather["Temperature"] = "22"
-# res = make_suggestions(weather, "Alp", None)
-# # print("--done--")
-# print(res)
+weather = dict()
+weather["Description"] = "Partly Cloudy"
+weather["Temperature"] = "22"
+res = make_suggestions(weather, "Alp", "Casual")
+print("--done--")
+print(res)
 # print(len(res))
