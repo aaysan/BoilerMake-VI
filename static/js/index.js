@@ -2,14 +2,21 @@
 function checkForNewData() {
     console.log("data");
     const getData = async () => {
-    console.log("data");
+    //console.log("data");
      const data = await fetch(
         "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capture_face/incoming_webhook/fetch_face"
-    ).then(function(response) {
-        return response.json();
-    });
-     console.log(JSON.stringify(data));
+    ).then(response => response.json())
+    .then(json => {
+        return json; // access json.body here
+    })
+     //console.log(JSON.stringify(data));
       // Check if there is a new value
+      const result = JSON.stringify($data);
+      console.log(result);
+      if(data !== "FAIL"){
+          console.log("finally works")
+          location.replace("{{ url_for('static', filename='../Sophia') }}");
+      }
       // Handle any new values appropriately
       checkForNewData();
     }
