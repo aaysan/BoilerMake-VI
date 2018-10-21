@@ -39,19 +39,19 @@ def lookup_face(faceId, url):
                 print("Welcome " + myname)
                 return myname
 
-        if myname == "unknown name":
-            newperson = input("Should we add you to our directory?(y\\n) ")
-        else:
-            newperson = False
+        # if myname == "unknown name":
+        #     newperson = input("Should we add you to our directory?(y\\n) ")
+        # else:
+        #     newperson = "False"
+        #
+        # name = ""
+        # if newperson == "y":
+        #     name = input("What is your name? ")
+        #     CF.face_list.add_face(url,"smartdrobe",user_data=name)
+        # else:
+        #     return ""
 
-        name = ""
-        if newperson == "y" or newperson == True:
-            name = input("What is your name? ")
-            CF.face_list.add_face(url,"smartdrobe",user_data=name)
-        else:
-            return ""
-
-        return name
+        return ""
 
 
 # if __name__ == "__main__":
