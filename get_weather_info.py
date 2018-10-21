@@ -3,8 +3,9 @@
 import json
 import urllib3
 import re
+import requests
 
-api_key = "i8F30cTGqhtmtUAdxa2TBrf9wr9GMuGZ" # "eauUGxjZkDMdh3HSNEur6IHsMBw9uvW4" Alp API
+api_key = "P5undAHs7pctX9EnaBb6zlXffyYMdPR6" # "eauUGxjZkDMdh3HSNEur6IHsMBw9uvW4" Alp API
 
 
 def get_weather_info(type='C'):
@@ -47,7 +48,7 @@ def get_weather_info(type='C'):
     url = "http://dataservice.accuweather.com/currentconditions/v1/" + location_key + '?apikey=' + api_key + '&language=en-us&details=false'
     response = http.request('GET', url)
     res = json.loads(response.data.decode('utf-8'))
-    # print(res)
+    print(res)
     # print(res[0]['Temperature'])
 
     if type == 'C':
@@ -57,10 +58,29 @@ def get_weather_info(type='C'):
     else:
         return None
 
+
+    weather_icon = round(int(res[0]["WeatherIcon"]),2)
+    print(weather_icon)
+    pic_url = r"https://developer.accuweather.com/sites/default/files/" + str(weather_icon) +  "-s.png"
+    with open('weatherpic.jpg', 'wb') as handle:
+        response = requests.get(pic_url, stream=True)
+
+        # if not response.ok:
+        #     print
+        #     response
+
+        for block in response.iter_content(1024):
+            if not block:
+                break
+
+            handle.write(block)
+
     result_dict = dict()
     result_dict["Temperature"] = str(round(result, 0))
     result_dict["Description"] = res[0]['WeatherText']
 
+
+
     return result_dict
 
-# print(get_weather_info())
+get_weather_info()
