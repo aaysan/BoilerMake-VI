@@ -4,7 +4,7 @@
 	}
 
     .backimage {
-		background-image: url("wardrobe.jpg");
+		background-image: url({{ url_for('static', filename='img/bg.png')}});
 		background-color: #cccccc;
 		background-position: center;
 		background-repeat: no-repeat;
@@ -36,7 +36,7 @@
 	<link  rel = "stylesheet" href = "style.css">
 	<div class="backimage">
 		<div class="maintext">
-			<h1 style="font-size: 50px">Hello Sophia!</h1>	
+			<h1 style="font-size: 50px">Hello ____!</h1>	
 		</div>
 		<div class="weather">
 			<h1 style="font-size: 30px">Weather</h1>

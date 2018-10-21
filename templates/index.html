@@ -13,15 +13,18 @@
 	body {
 		margin: 0;
 	}
-
+	
     .backimage {
-		background-image: url("wardrobe.jpg");
+		background-image: url({{ url_for('static', filename='img/bg.png') }});
 		background-color: #cccccc;
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
 		position: relative;
-		height: 800px;
+		height: 100%; 
 	} 
 
 	.maintext {
@@ -36,18 +39,18 @@
 </style>
 </head>
 <body>
-	<link  rel = "stylesheet" href = "style.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class="backimage">
 		<dev class = "maintext">
 			<h1 style="font-size: 50px">Welcome, What would you like to do today?</h1>
 		</dev>
 		<center>
 				<p>
-				<img src = "clothes.jpg" alt = "My Photo" style = "width:550px; height 350px; padding-top: 180px">
+				<img src = "{{ url_for('static', filename='img/poster.png') }}" alt = "My Photo" style = "width:550px; height 350px; padding-top: 180px">
 				</p>
 				<p>
 					<button onclick="location.href='http://www.google.com'"class="btn Picture">Take Picture</button>
-					<button onclick="location.href='Sophia.html'"class="btn Confirm">Confirm</button>
+					<button onclick="location.href='{{ url_for('static', filename='../Sophia') }}'"class="btn Confirm">Confirm</button>
 				</p>
 		</center>
 		

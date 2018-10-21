@@ -1,0 +1,164 @@
+/*------------------------------------*\
+	RESET
+\*------------------------------------*/
+body,div,ul{
+	margin:0;
+	/* padding:0; */
+}
+
+body{
+	/*margin-left:30px;
+	margin-right: 60px;
+	margin-top: 50px;*/
+}
+
+
+em{
+	font-style: italic;
+}
+
+h5{
+	font-size: 1.5em;
+	font-weight: bold;
+	color: navy;
+}
+
+ol {
+	display: block;
+	list-style-type: decimal;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+
+#rov{
+	margin-left: 30px;
+}
+
+#note{
+	margin-left: 10px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+/*------------------------------------*\
+	BUTTON
+\*------------------------------------*/
+.btn {
+    border: none;
+    background-color: inherit;
+    padding: 14px 28px;
+    font-size: 32px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+/* On mouse-over */
+.btn:hover {background: #eee;}
+
+.Picture {color: dodgerblue;}
+.Confirm {color: red;}
+
+.func {
+	border: none;
+	margin-top: 15%;
+	margin-left: 10%;
+	margin-right: 5%;
+    background-color: #e0622c;
+    padding: 14px 80px;
+    font-size: 32px;
+    cursor: pointer;
+    display: inline-block;
+}
+.func:hover {background: #993366; text-decoration: underline;}
+.Add {color: yellow;}
+.Select {color: rgb(0,0,102);}
+
+.func2 {
+	border: none;
+	margin-top: 5%;
+	margin-left: 6%;
+	margin-right: 6%;
+    background-color: #e0622c;
+    padding: 14px 80px;
+    font-size: 32px;
+    cursor: pointer;
+    display: inline-block;
+}
+.func2:hover {background: #993366; text-decoration: underline;}
+.Recommend {color: lightgreen;}
+.Remove {color: orange;}
+
+/*------------------------------------*\
+	NAV
+\*------------------------------------*/
+#nav{
+	list-style: none;
+	font-weight: bold;
+	border: 1px solid #ccc;
+	border-width: 1px 0;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	/*Clear floats*/
+	float: center;
+	width: 345px;
+	position: relative;
+	z-index: 5;
+}
+
+#nav li{
+	float: left;
+	width: 180px;
+	margin-right: 20px;
+	margin-left: -40px;
+	position: relative;
+	display: block;
+}
+
+#nav a{
+	display: block;
+	padding: 5px;
+	color: #fff;
+	background: rgb(0,0,102);
+	text-decoration: none;
+}
+
+#nav a:hover{
+	color: #fff;
+	/*background: #6b0c36;*/
+	background: #993366;
+	text-decoration: underline;
+}
+
+/*--- DROPDOWN ---*/
+#nav ul{
+	background:#fff; /* Adding a background makes the dropdown work properly in IE7+. Make this as close to your page's background as possible (i.e. white page == white background). */
+	background:rgba(255,255,255,0); /* But! Let's make the background fully transparent where we can, we don't actually want to see it if we can help it... */
+	list-style:none;
+	position:absolute;
+	left:-9999px; /* Hide off-screen when not needed (this is more accessible than display:none;) */
+}
+#nav ul li{
+	padding-top:1px; /* Introducing a padding between the li and the a give the illusion spaced items */
+	float:none;
+}
+#nav ul a{
+	white-space:nowrap; /* Stop text wrapping and creating multi-line dropdown items */
+}
+#nav li:hover ul{ /* Display the dropdown on hover */
+	left:0; /* Bring back on-screen when needed */
+}
+#nav li:hover a{ /* These create persistent hover states, meaning the top-most link stays 'hovered' even when your cursor has moved down the list. */
+	background:#993366;
+	text-decoration:underline;
+}
+#nav li:hover ul a{ /* The persistent hover state does however create a global style for links even before they're hovered. Here we undo these effects. */
+	text-decoration:none;
+}
+#nav li:hover ul li a:hover{ /* Here we define the most explicit hover states--what happens when you hover each individual link. */
+	background:rgb(0,0,102);
+}
+
