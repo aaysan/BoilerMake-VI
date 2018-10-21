@@ -76,7 +76,31 @@ sub {
 .func:hover {background: #993366; text-decoration: underline;}
 .Add {color: yellow;}
 .Select {color: rgb(0,0,102);}
+/*
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
 
+.select-content {
+	display: none;
+	position: absolute;
+	background-color: #993366；
+	min-width: 90px;
+	overflow: auto;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1; 
+}
+
+.select-content a {
+	color:black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+*/
 .func2 {
 	border: none;
 	margin-top: 5%;
