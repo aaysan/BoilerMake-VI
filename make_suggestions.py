@@ -2,6 +2,8 @@
 
 import re
 import requests
+import pprint as pp
+import json
 
 def make_suggestions(weather,name,cloth_type):
 
@@ -22,7 +24,7 @@ def make_suggestions(weather,name,cloth_type):
     else:
         params = {'name':name, 'cloth_type':cloth_type}
     a = requests.get(persons_url, params=params)
-    print(a.text)
+    possible_attires = json.loads(a.text)
 
     # TODO:: Weather Suggestions
 
@@ -39,6 +41,9 @@ def make_suggestions(weather,name,cloth_type):
         print("suggest an umbrealla")
 
     # TODO:: Occasion Suggestions
+
+    for elem in possible_attires:
+        pp.pprint(elem)
 
     if occasion == "Business":
         print("suggest what is on the business in his/her clothes list")
@@ -57,4 +62,4 @@ def make_suggestions(weather,name,cloth_type):
 weather = dict()
 weather["Description"] = "Partly Cloudy"
 weather["Temperature"] = "22"
-make_suggestions(weather, "Natat", "Men's Watch")
+make_suggestions(weather, "Natat", None)

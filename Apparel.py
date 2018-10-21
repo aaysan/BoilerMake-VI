@@ -11,7 +11,7 @@ CLIENT_ID = "100ef2fd6ae00e0"
 
 def getApparel():
     cv2.namedWindow("Cloth Detection")
-    vc = cv2.VideoCapture(2)
+    vc = cv2.VideoCapture(0)
 
     time = 0
 
@@ -93,17 +93,17 @@ def get_occasion(name):
 
 
     if sportwear is not None:
-        return "Sports|Activewear"
+        return "Activewear"
 
     businesspattern = "Blazer|Button-Down|Blouse|Button-Up|Pant Suit|Tie|Vest"
     businesswear = re.search(businesspattern,name)
 
     if businesswear is not None:
-        return "Business|Business Casual"
+        return "Business"
 
 
 
-    return "Casual|Daily"
+    return "Casual"
 
 if __name__ == "__main__":
     temp1,temp2 = finditemandcolor("https://i.imgur.com/JhwydNl.png")
