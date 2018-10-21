@@ -14,7 +14,7 @@ def getApparel():
     vc = cv2.VideoCapture(0)
 
     time = 0
-
+    # input("Press s to start")
     while vc.isOpened():
         ret, frame = vc.read()
         if frame is None:
@@ -88,15 +88,15 @@ def finditemandcolor(imageurl):
 def get_occasion(name):
     # Casual, Sportwear, Business/Business Casual
 
-    sportspattern = ".*Activewear.*"
-    sportwear = re.search(sportspattern,name)
+    sportspattern = "activewear|sweatpants|legging|relax|"
+    sportwear = re.search(sportspattern, name.lower())
 
 
     if sportwear is not None:
         return "Activewear"
 
-    businesspattern = "Blazer|Button-Down|Blouse|Button-Up|Pant Suit|Tie|Vest"
-    businesswear = re.search(businesspattern,name)
+    businesspattern = "dress|coat|suit|cardigan|turtle|jacket"
+    businesswear = re.search(businesspattern, name.lower())
 
     if businesswear is not None:
         return "Business"
@@ -105,7 +105,7 @@ def get_occasion(name):
 
     return "Casual"
 
-if __name__ == "__main__":
-    temp1,temp2 = finditemandcolor("https://i.imgur.com/JhwydNl.png")
-    pp.pprint(temp1)
-    pp.pprint(temp2)
+# if __name__ == "__main__":
+#     temp1,temp2 = finditemandcolor("https://i.imgur.com/JhwydNl.png")
+#     pp.pprint(temp1)
+#     pp.pprint(temp2)

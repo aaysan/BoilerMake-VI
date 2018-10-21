@@ -46,8 +46,10 @@ if __name__ == "__main__":
     face_info["url"] = url
     requests.post(face_database_url,json=face_info)
 
-
-
+    # input("Press s to start")
+    #
+    # a = "n"
+    # while a == "n":
     # temp = ""
     #
     # while temp == "":
@@ -64,12 +66,13 @@ if __name__ == "__main__":
     clothes_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/' \
                            r'upload_img/incoming_webhook/upload_cloth_img'
     clothes_info = dict()
-    clothes_info["name"] = nameofperson
+    clothes_info["name"] = "Alp" #name
     clothes_info["url"] = imurl
     clothes_info["cloth"] = cloth
     clothes_info["colors"] = colors
 
     requests.post(clothes_database_url, json=clothes_info)
+
 
 
 

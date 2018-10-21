@@ -10,12 +10,15 @@ def make_suggestions(weather,name,cloth_type):
     # get inputs about the occasion
 
     rainpattern = r"rain|snow|shower|flurries|storm"
+    coldpattern = r"sweat|hoodie|cardigan"
+    verycoldpattern = r"coat|jacket|turtleneck"
+    warmpattern = r"short|t-shirt|tshirt"
 
-    suggestions = []
+    suggestions = set()
 
     occasion = input("What is the occasion? ((B)usiness,Casual,Sportwear\n->")
 
-    # TODO:: get the clothes available for that person based on that name
+    # get personal info
     persons_url = r"https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/upload_" \
                   r"img/incoming_webhook/find_cloth"
 
@@ -28,38 +31,38 @@ def make_suggestions(weather,name,cloth_type):
 
     # TODO:: Weather Suggestions
 
-    if int(weather["Temperature"]) < 15:
-        print("suggest something like a sweater")
-
-
-    if int(weather["Temperature"]) < 8:
-        print("suggest a jacket")
-
-
-    isRainy = re.search(rainpattern,weather["Description"].lower())
-    if isRainy is not None:
-        print("suggest an umbrealla")
-
-    # TODO:: Occasion Suggestions
-
     for elem in possible_attires:
-        pp.pprint(elem)
+        print(elem['cloth'])
+        if int(weather["Temperature"]) < 15:
+            cold_match = re.search(coldpattern, elem['cloth']['name'])
+            if cold_match is not None:
+                suggestions.add(elem['cloth']['name'])
 
-    if occasion == "Business":
-        print("suggest what is on the business in his/her clothes list")
+        if int(weather["Temperature"]) < 8:
+            very_cold_match = re.search(verycoldpattern, elem['cloth']['name'])
+            if very_cold_match is not None:
+                suggestions.add(elem['cloth']['name'])
+
+        if int(weather["Temperature"]) > 25:
+            warm_match = re.search(warmpattern, elem['cloth']['name'])
+            if warm_match is not None:
+                suggestions.add(elem['cloth']['name'])
+
+        isRainy = re.search(rainpattern,weather["Description"].lower())
+        if isRainy is not None:
+           suggestions.add("Umbrealla")
+
+    # Occasion Suggestions
 
 
-    if occasion == "Casual":
-        print("suggest what is on the casual in his/her clothes list")
-
-
-    if occasion == "Sportwear":
-        print("suggest what is on the sportwear in his/her clothes list")
-
+        if elem['cloth']['Occasion'] == occasion:
+            suggestions.add(elem['cloth']['name'])
 
     return suggestions
 
 weather = dict()
 weather["Description"] = "Partly Cloudy"
 weather["Temperature"] = "22"
-make_suggestions(weather, "Natat", None)
+res = make_suggestions(weather, "Alp", None)
+print("--done--")
+print(res)

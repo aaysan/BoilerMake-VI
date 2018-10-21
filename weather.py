@@ -53,4 +53,4 @@ def get_weather_info():
 
     return weather_info
 
-print(get_weather_info())
+# print(get_weather_info())
