@@ -129,7 +129,25 @@ sub {
     cursor: pointer;
     display: inline-block;
 }
+.func3:hover {background: #993366; text-decoration: underline;}
 .Submit {color: red;}
+
+.back {
+	border: none;
+	position: absolute;
+	bottom: 10%;
+	margin-left: 8%;
+	margin-right: 6%;
+    background-color: lightgrey;
+    padding: 14px 40px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.back:hover {background: #993366; text-decoration: underline;}
+.back {color: red;}
+.Main {color: red;}
+.Main:hover {background: #993366; text-decoration: underline;}
+
 
 /*------------------------------------*\
 	CHECKBOX
