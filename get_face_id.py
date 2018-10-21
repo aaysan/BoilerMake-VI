@@ -1,7 +1,6 @@
 # Mehmet Alp Aysan
 
-import http.client, urllib.request, urllib.parse, urllib.error, base64
-import get_face
+
 import cognitive_face as CF
 
 
@@ -38,19 +37,21 @@ def lookup_face(faceId, url):
                         myname = elem["userData"]
 
                 print("Welcome " + myname)
+                return myname
 
         if myname == "unknown name":
             newperson = input("Should we add you to our directory?(y\\n) ")
         else:
             newperson = False
 
+        name = ""
         if newperson == "y" or newperson == True:
             name = input("What is your name? ")
             CF.face_list.add_face(url,"smartdrobe",user_data=name)
         else:
-            return False
+            return ""
 
-        return True
+        return name
 
 
 # if __name__ == "__main__":

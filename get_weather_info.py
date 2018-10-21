@@ -57,6 +57,10 @@ def get_weather_info(type='C'):
     else:
         return None
 
-    return (round(result, 0),res[0]['WeatherText'])
+    result_dict = dict()
+    result_dict["Temperature"] = str(round(result, 0))
+    result_dict["Description"] = res[0]['WeatherText']
+
+    return result_dict
 
 # print(get_weather_info())
