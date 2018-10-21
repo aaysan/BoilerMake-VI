@@ -1,33 +1,41 @@
+<style type="text/css">
+  .btn-primary { background-color: #69B241 }
+
+  .backimage {
+    background-image: url({{ url_for('static', filename='img/bg.png') }});
+    background-color: #cccccc;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    position: relative;
+    height: 100%;
+  }
+
+  #success { color: green; }
+  #error { color: red; }
+  #note { font-size: 0.75em; }
+
+  #image {
+    width: 100%;
+    min-height: 120px;
+    max-height: 500px;
+    margin-top: 10px;
+  }
+
+  #spinner { margin-left: 10px; }
+  .hidden { display: none; }
+</style>
+
 <!-- Base Stitch Browser SDK -->
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.13/stitch.js"></script>
 <!-- Stitch AWS SDK -->
 <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.13/stitch-services-aws.js"></script>
 
-<div class="container">
+<div class="backimage">
 
-  <div id="user-interface">
-    <div class="input-group mb-3">
-      <div class="custom-file">
-        <label class="custom-file-label" for="file-input">Choose an Image File (.jpg, .png, or .gif)</label>
-        <input type="file" class="custom-file-input" id="file-input" onchange="updateInputValue(this)">
-      </div>
-    </div>
-    <button id="upload-button" class="btn btn-success" onclick="setUploadingState().then(handleFileUpload)">
-      <span id="loading-button">
-        <span id="loading-button-label">Upload Image File</span>
-        <div id="spinner" class="la-ball-pulse-sync la-sm hidden"><div></div><div></div><div></div></div>
-      </span>
-    </button>
-
-
-
-  </div>
-
-  <div id="notification-box">
-    <span id="note"></span>
-    <span id="success"></span>
-    <span id="error"></span>
-  </div>
 
   <div id="image">
     <img id="uploaded-image" class="hidden" />
@@ -35,4 +43,10 @@
       Uploaded Image Will Appear Here
     </div>
   </div>
+
+
+  </div>
+
+
+
 </div>
