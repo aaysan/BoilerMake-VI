@@ -36,10 +36,11 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class="backimage">
 		<div class="maintext">
-			<h1 style="font-size: 50px">Hello Sophia!</h1>
+			<h1 style="font-size: 50px" id="tempid">Hello Sophia!</h1>
 		</div>
 		<div class="weather">
-			<h1 style="font-size: 30px">Weather</h1>
+			<h1 style="font-size: 30px" id="tempid2">Weather</h1>
+			<h2 style="font-size: 30px" id="tempid3">Temperature</h2>
 		</div>
 
 			<center>
@@ -55,7 +56,30 @@
 	</div>
 
 	<script>
-		function myFunction() {document.getElementById("selectdrop").classList.toggle("show");
-}
+		function myFunction() {document.getElementById("selectdrop").classList.toggle("show");}
 	</script>
+
+	<script>
+		var url_string = window.location.href
+		var url = new URL(url_string);
+		var name = url.searchParams.get("name");
+		const idelement = document.getElementById("tempid");
+		idelement.innerHTML = "Hello "+name;
+	</script>
+
+
+	<script>
+	const data = fetch(
+	   "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/weather/incoming_webhook/get_weather"
+   ).then(response => response.json())
+   .then(json => {
+	   const idelement2 = document.getElementById("tempid2");
+	   idelement2.innerHTML = "Weather: "+ json["Description"];
+	   const idelement3 = document.getElementById("tempid3");
+	   idelement3.innerHTML = "Temperature "+ json["Temperature"]["$numberDouble"] + "C";
+   })
+	</script>
+
+
+
 </body>
