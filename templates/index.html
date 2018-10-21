@@ -1,139 +1,60 @@
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"> -->
 <html lang="en">
 <head>
-<meta name="viewport" content=
-"width=device-width, initial-scale=1">
-<meta name="generator" content=
-"HTML Tidy for Linux (vers 14 June 2007), see www.w3.org">
-<title>Yuqin Sophia Duan</title>
-<meta http-equiv="Content-Type" content=
-"text/html; charset=us-ascii">
-<meta content="MSHTML 6.00.2800.1400" name="GENERATOR"> -->
-<style type="text/css">
-	body {
-		margin: 0;
-	}
-
-    .backimage {
-		background-image: url({{ url_for('static', filename='img/bg.png') }});
-		background-color: #cccccc;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		position: relative;
-		height: 100%;
-	}
-
-	.maintext {
-  text-align: center;
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: navy;
-	}
-
-</style>
+	<style type="text/css">
+		body {
+			margin: 0;
+		}
+		
+		.backimage {
+			background-image: url({{ url_for('static', filename='img/bg.png') }});
+			background-color: #cccccc;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			position: relative;
+			height: 100%;
+		}
+		
+		.maintext {
+			text-align: center;
+			position: absolute;
+			top: 10%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: navy;
+		}
+		
+	</style>
 </head>
 <body>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<div class="backimage">
+		<!-- <script src="{{ url_for('static', filename='js/index.js') }}">
+			checkForNewData();
+		</script> -->
 		<dev class = "maintext">
 			<h1 style="font-size: 50px; color: #D4D4D4;">Welcome</h1>
 			<h2 style="font-size: 30px; color: #D4D4D4;">What would you like to wear today?</h2>
-
+			
 		</dev>
 		<center>
-				<p>
+			<p>
 				<img src = "{{ url_for('static', filename='img/poster.png') }}" alt = "My Photo" style = "width:550px; height 350px; padding-top: 180px">
-				</p>
-				<p>
-					<button onclick="location.href='http://www.google.com'"class="btn Picture">Take Picture</button>
-					<button onclick="location.href='{{ url_for('static', filename='../Sophia') }}'"class="btn Confirm">Confirm</button>
-				</p>
+			</p>
+			<p>
+				<button onclick="location.href='http://www.google.com'"class="btn Picture">Take Picture</button>
+				<button onclick="location.href='{{ url_for('static', filename='../Sophia') }}'"class="btn Confirm">Confirm</button>
+			</p>
 		</center>
-
+		
 	</div>
-
-		<p></p>
-		<p></p>
-<!--<div class="wrapper container">
-<div class="heading">
-<h1> Welcome to My Web Page  Yuqin Duan "Sophia"</h1>
-</div>
-<div class="row">
-<div class="col-sm-6">
-<div class="band">
-<h3><strong>Yuqin Sophia Duan</strong></h3>
-</div>
-<p>I am currently a Sophomore pursuing a major in Electrical Engineering and minor in Computer Science and Mathematics at Purdue University. My current GPA is 3.91. I am an active member at Purdue IEEE and have been the learning chair for a semester. I am working for Deboer Lab about data analysis. I love laughing and hope my smile will always bring positive energy to others. I studied classical ballet and traditional dance in my hometown of Beijing, China. My hobbies also include playing the piano and violin, running and reading.</p>
-<p>Your web page address is:
-<i>http://web.ics.purdue.edu/~duan35/</i></p>
-</div>
-</div>
-<div class="row">
-<div class="col-sm-12">
-<div class="band">
-<h3><strong>HI MI NAME IS SOPHIA DUAN PLS HIRE ME</strong></h3>
-</div>
-</div>
-<div class="col-sm-4">
-<div class="subgrey">
-<p>You are given <strong>5GB</strong> of space in your career
-account; keep in mind that anything in your "www" folder shares
-that space.</p>
-</div>
-</div>
-<div class="col-sm-8">
-<div class="subgrey">
-<p>Some helpful links are listed below.</p>
-</div>
-</div>
-<div class="col-sm-4">
-<ul>
-<li><a href="http://www.purdue.edu/">Purdue University</a></li>
-<li><a href="http://www.purdue.edu/itap">Information Technology at
-Purdue (ITaP)</a></li>
-<li><a href="http://www.itap.purdue.edu/tlt">ITaP - Teaching &amp;
-Learning Technologies</a></li>
-<li><a href="http://www.itap.purdue.edu/tlt/help">ITaP - Teaching
-&amp; Learning Technologies - Help</a></li>
-</ul>
-</div>
-<div class="col-sm-4">
-<ul>
-<li><a href=
-"https://www.codecademy.com/courses/web-beginner-en-HZA3b/0/1">Code
-Academy: Learn HTML</a></li>
-<li><a href="http://www.w3schools.com/html">W3 Schools: HTML
-Tutorials</a></li>
-<li><a href="https://validator.w3.org">W3 Code Validator</a></li>
-<li><a href="http://support.purdue.edu/goldanswers/300870">How do I
-run the WebFix for my account?</a></li>
-</ul>
-</div>
-<div class="col-sm-12">
-<div class="subgrey">
-<h3>NOTE</h3>
-<h4><strong>This is a <em>self-serve service</em>; you are solely
-responsible for posting and maintaining the content on this
-site.</strong></h4>
-</div>
-<div class="col-sm-6">
-<p>If you are having technical difficulties, please contact the
-ITaP Customer Service Center:</p>
-<p><strong>Email:</strong> itap@purdue.edu<br></p>
-<p><strong>Phone:</strong> 765-494-4000<br></p>
-<p><strong>In Person:</strong> Main floor of the Humanities, Social
-Science, and Education Library (HSSE) - Stewart Center 135</p>
-<p><strong>GoldAnswers KnowledgeBase:</strong> <a href=
-"http://www.purdue.edu/goldanswers">www.purdue.edu/goldanswers</a></p>
-</div>
-</div>
-</div>
-</div> -->
+	
+	<p></p>
+	<p></p>
 </body>
 </html>
