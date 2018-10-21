@@ -46,14 +46,14 @@
 
 		<center>
 			<!-- <blockquote class="imgur-embed-pub" lang="en" data-id="KUteCdn"><a href="//imgur.com/KUteCdn">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script> -->
-			<img src="https://s.imgur.com/images/logo-1200-630.jpg" alt = "My Photo" style = "width:400px; height 350px; position: absolute; top: 150px; left: 100px" id="im1">
-			<img src="http://i.imgur.com/s1or7a7.jpg" alt="http://i.imgur.com/s1or7a7.jpg" style = "width:400px; height 350px; position: absolute; top: 150px; left: 900px" id="im2">
+			<img src="clothes.jpg" alt = "My Photo" style = "width:400px; height 350px; position: absolute; top: 150px; left: 100px" id="im1">
+			<img src="clothes.jpg" alt="clothes.jpg" style = "width:400px; height 350px; position: absolute; top: 150px; left: 900px" id="im2">
 			<img src = "clothes.jpg" alt = "My Photo" style = "width:400px; height 350px; position: absolute; top: 400px; left: 100px" id="im3">
 			<img src = "clothes.jpg" alt = "My Photo" style = "width:400px; height 350px; position: absolute; top: 400px; left: 900px" id="im4">
 		</center>
 
-		<button onclick="location.href='../index'"class="back Home" style=" margin-left: 5	%;">Home</button>
-		<button onclick="location.href='../Sophia'"class="back Main" style=" margin-left: 90%;">Main</button>
+		<button onclick="location.href='../index'"class="back Home" style=" margin-left: 5	%;" id="b1">Home</button>
+		<button onclick="location.href='../Sophia'"class="back Main" style=" margin-left: 90%;" id="b2">Main</button>
 	</div>
 
 	<script>
@@ -91,16 +91,22 @@
 	   const image4 = document.getElementById("im4");
 	   console.log(json);
 	   console.log(json[0]["url"]);
-	   //image1.setAttribute('src', json[0]["url"]);
-	   //image1.src = json[0]["url"];
-	   //image1.alt = json[0]["url"];
-
-	   //image2.src = json[1]["url"];
-	   //image3.src = json[2]["url"];
-	   //image4.src = json[3]["url"];
+	   image1.src = json[0]["url"];
+	   setTimeout(function(){ 
+		   image2.src = json[1]["url"]; 
+		   setTimeout(function(){ image4.src = json[3]["url"]; }, 2000);
+		   }, 
+		   1000);
+	   setTimeout(function(){ image3.src = json[2]["url"]; }, 2000);
 	   return(json);
    });
    console.log(data2);
+   document.getElementById('b1').onclick = function() {
+   	window.location.href =  "../index?name=" + name + "&occasion_type=" + otype;
+   }
+   document.getElementById('b2').onclick = function() {
+	   window.location.href =  "../Sophia?name=" + name + "&occasion_type=" + otype;
+   }
 
    </script>
 
