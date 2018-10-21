@@ -2,6 +2,7 @@
 
 
 import cognitive_face as CF
+import get_face
 
 
 def get_face_id(url):
@@ -69,7 +70,7 @@ def lookup_face(faceId, url):
 #         print("The list exist.")
 #
 #     get_face.get_face()
-#     url = get_face.get_url_string()
+#     url = get_face.get_face_url_string()
 #     print(url)
 #     faceId = get_face_id(url)
 #     print(faceId)

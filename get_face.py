@@ -21,7 +21,7 @@ def get_face():
     if eye_cascade.empty(): raise Exception("your eye_cascade is empty. are you sure, the path is correct ?")
 
     cv2.namedWindow("Face Detection")
-    vc = cv2.VideoCapture(2)
+    vc = cv2.VideoCapture(0)
 
     time = 0
 

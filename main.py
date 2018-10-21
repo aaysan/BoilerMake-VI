@@ -31,20 +31,20 @@ if __name__ == "__main__":
         pass
 
 
-    # get_face.get_face()
-    # url = get_face.get_face_url_string()
-    # # print(url)
-    # faceId = get_face_id.get_face_id(url)
-    # # print(faceId)
-    # #
-    # nameofperson = get_face_id.lookup_face(faceId, url)
+    get_face.get_face()
+    url = get_face.get_face_url_string()
+    # print(url)
+    faceId = get_face_id.get_face_id(url)
+    # print(faceId)
     #
-    # face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
-    #                     r'ure_face/incoming_webhook/face_detected'
-    # face_info = dict()
-    # face_info["name"] = nameofperson
-    # face_info["url"] = url
-    # requests.post(face_database_url,json=face_info)
+    nameofperson = get_face_id.lookup_face(faceId, url)
+
+    face_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/Capt' \
+                        r'ure_face/incoming_webhook/face_detected'
+    face_info = dict()
+    face_info["name"] = nameofperson
+    face_info["url"] = url
+    requests.post(face_database_url,json=face_info)
 
     # input("Press s to start")
     #
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     clothes_database_url = r'https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/' \
                            r'upload_img/incoming_webhook/upload_cloth_img'
     clothes_info = dict()
-    clothes_info["name"] = "Alp" #name
+    clothes_info["name"] = nameofperson
     clothes_info["url"] = imurl
     clothes_info["cloth"] = cloth
     clothes_info["colors"] = colors
