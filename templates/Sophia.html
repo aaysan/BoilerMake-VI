@@ -45,8 +45,8 @@
 
 			<center>
 				<p>
-					<button onclick="location.href='http://www.google.com'"class="func Add">Add Clothes</button>
-					<button onclick="location.href='{{ url_for('static', filename='../select_clothes') }}'"class="func Select">Select Clothes</button>
+					<button onclick="location.href='http://www.google.com'" class="func Add"  id="add_cloth">Add Clothes</button>
+					<button onclick="location.href='{{ url_for('static', filename='../select_clothes') }}'"class="func Select" id = "fixit">Select Clothes</button>
 				</p>
 				<p>
 					<button onclick="location.href='{{ url_for('static', filename='../Recommend') }}'" class="func2 Recommend" id="tempid4">Recommend Clothes</button>
@@ -69,6 +69,12 @@
 		document.getElementById('tempid4').onclick = function() {
 			window.location.href =  "../Recommend?name=" + name;
 		}
+		document.getElementById('fixit').onclick = function() {
+			window.location.href =  "../select_clothes?name=" + name;
+		}
+		document.getElementById('add_cloth').onclick = function() {
+			window.location.href =  "../add_cloths?name=" + name;
+		}
 		//document.getElementById("tempid4").setAttribute("onclick",'location.href = "../Recommend?name=" + json["name"]');
 
 	</script>
@@ -83,6 +89,12 @@
 		   idelement2.innerHTML = "Weather: "+ json["Description"];
 		   const idelement3 = document.getElementById("tempid3");
 		   idelement3.innerHTML = "Temperature "+ json["Temperature"]["$numberDouble"] + "C";
+
+
+
+
+
+		   https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/add_cloth/incoming_webhook/request_add_cloth?natat=sucks
 	   })
 		</script>
 

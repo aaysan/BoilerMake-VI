@@ -48,5 +48,58 @@
   </div>
 
 
+  <script>
+      var url_string = window.location.href
+      var url = new URL(url_string);
+      var name = url.searchParams.get("name");
+      var otype = url.searchParams.get("occasion_type");
+      const data2 = fetch(
+         "https://webhooks.mongodb-stitch.com/api/client/v2.0/app/our_last_hackson-sfrvf/service/upload_img/incoming_webhook/find_cloth?name=" + name 
+       ).then(response => response.json())
+       .then(json => {
+
+        json.forEach(element => {
+          var node = document.createElement("img");                 // Create a <li> node
+          node.setAttribute("src", element.url)
+          node.setAttribute("width", "400px");
+
+          // node.setAttribute("width", "10px");
+            document.getElementById("uploaded-image-placeholder").appendChild(node);     // Append <li> to <ul> with id="myList"
+            
+            node = document.createElement("h2");                 // Create a <li> node
+            node.innerHTML = element['cloth']['name'] + " , " + element['cloth']['Occasion']
+            document.getElementById("uploaded-image-placeholder").appendChild(node);     // Append <li> to <ul> with id="myList"
+            node = document.createElement("h4");                 // Create a <li> node
+            node.innerHTML = element['color']['name']
+            document.getElementById("uploaded-image-placeholder").appendChild(node);     // Append <li> to <ul> with id="myList"
+            document.getElementById("uploaded-image-placeholder").appendChild(document.createElement("hr"));
+        });
+
+      //    const image1 = document.getElementById("im1");
+      //    const image2 = document.getElementById("im2");
+      //    const image3 = document.getElementById("im3");
+      //    const image4 = document.getElementById("im4");
+      //    console.log(json);
+      //    console.log(json[0]["url"]);
+      //    image1.src = json[0]["url"];
+      // //    setTimeout(function(){ 
+      //   image2.src = json[1]["url"]; 
+      //   image3.src = json[2]["url"]; 
+      //   image4.src = json[3]["url"]; 
+      //   //    }, 
+      //   //    1000);
+          
+         return(json);
+       });
+       console.log(data2);
+       document.getElementById('b1').onclick = function() {
+         window.location.href =  "../index?name=" + name + "&occasion_type=" + otype;
+       }
+       document.getElementById('b2').onclick = function() {
+         window.location.href =  "../Sophia?name=" + name + "&occasion_type=" + otype;
+       }
+    
+       </script>
+    
 
 </div>

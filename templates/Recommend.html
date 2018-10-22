@@ -49,15 +49,15 @@
 		<p>
 			<h1 style="color: navy; padding-left: 10%">What is the Occasion?</h1>
 				<label class="container">Casual
-  					<input type="radio" name="radio" id="radio1">
+  					<input type="radio" name="occasion" id="radio1" value="1">
   					<span class="checkmark"></span>
 				</label>
 				<label class="container">Sports
-  					<input type="radio" name="radio" id="radio2">
+  					<input type="radio" name="occasion" id="radio2" value="2">
   					<span class="checkmark"></span>
 				</label>
 				<label class="container">Business
-  					<input type="radio" name="radio" id="radio3">
+  					<input type="radio" name="occasion" id="radio3" value="3">
   					<span class="checkmark"></span>
 				</label>
 				<!-- <label class="container">Wedding
@@ -95,17 +95,18 @@
 			var url_string = window.location.href
 			var url = new URL(url_string);
 			var name = url.searchParams.get("name");
-			var x = document.getElementById("radio1").value;
-			var y = document.getElementById("radio2").value;
-			var z = document.getElementById("radio3").value;
+			var x = document.getElementById("radio1");
+			var y = document.getElementById("radio2");
+			var z = document.getElementById("radio3");
 			var typecl = "Casual";
-			if(x === 1){
+			console.log("asdfasdfasdfasd");
+			if(x.checked){
 				typecl = "Casual";
 			}
-			if(y === 1){
+			if(y.checked){
 				typecl = "Sports";
 			}
-			if(z === 1){
+			if(z.checked){
 				typecl = "Business";
 			}
 			window.location.href =  "../Select?name=" + name + "&occasion_type=" + typecl;
